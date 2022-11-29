@@ -1,0 +1,17 @@
+#root {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 3rem;
+  text-align: center;
+}
+
+.black {
+  background-color:whitesmoke;
+}
+
+body{
+  background-image: url("/img/principal.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
