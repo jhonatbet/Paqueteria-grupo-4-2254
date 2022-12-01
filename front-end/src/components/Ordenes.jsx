@@ -16,25 +16,28 @@ export const Ordenes = () => {
               <th scope="col">Ciudad Destino</th>
               <th scope="col">Direccion Destino</th>
               <th scope="col">Estado Orden</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="row">1</th>
+              <th scope="row"><Link to='/actualizarorden/1'>1</Link></th>
+              <td>28/11/22</td>
+              <td>Pereira</td>
+              <td>NNNN</td>
+              <td>Pendiente</td>
+              <th scope="row"><Link to='/actualizarorden/1'>Edit</Link></th>
+
+            </tr>
+            <tr>
+              <th scope="row"><Link to='/actualizarorden/2'>2</Link></th>
               <td>28/11/22</td>
               <td>Pereira</td>
               <td>NNNN</td>
               <td>Pendiente</td>
             </tr>
             <tr>
-              <th scope="row">2</th>
-              <td>28/11/22</td>
-              <td>Pereira</td>
-              <td>NNNN</td>
-              <td>Pendiente</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
+              <th scope="row"><Link to='/actualizarorden/3'>3</Link></th>
               <td>28/11/22</td>
               <td>Pereira</td>
               <td>NNNN</td>

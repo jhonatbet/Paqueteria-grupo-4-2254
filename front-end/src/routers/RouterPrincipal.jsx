@@ -27,10 +27,10 @@ export const RouterPrincipal = () => {
           <NavLink to="/crearorden"
           className="nav-link active" aria-current="page" >Crear Orden</NavLink>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <NavLink to="/actualizarorden"
           className="nav-link active" aria-current="page" >Actualizar Orden</NavLink>
-        </li>
+        </li> */}
       </ul>
 
 
@@ -44,7 +44,8 @@ export const RouterPrincipal = () => {
               <Route path='/registro' element={< Registro/>}/>
               <Route path='/ordenes' element={< Ordenes/>}/>
               <Route path='/crearorden' element={< CrearOrden/>}/>
-              <Route path='/actualizarorden' element={< ActualizarOrden/>}/>
+              {/* <Route path='/actualizarorden' element={< ActualizarOrden/>}/> */}
+              <Route path='/actualizarorden/:id' element={< ActualizarOrden/>}/>
 
           </Routes>
         </section>
