@@ -1,12 +1,21 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
+import { FormuOrden } from './FormuOrden';
+
+const ordenData = {
+  id:1,
+  nombre:'Jhonatan',
+  destino: 'Pereira'
+}
 
 export const ActualizarOrden = () => {
+  //Debo llamar al Back y preguntar por el id a editar
+  const {id} = useParams();
 
-  
   return (
-    <div>
-        <h1>Pagina de Actualizar Orden</h1>
-        <p>Esta es la pagina de Actualizar</p>
+    <div className="container black">
+        <h2>Actualizar Orden Numero #{id}</h2>
+        <FormuOrden data={ordenData}/>
     </div>
   )
 }

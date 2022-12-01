@@ -15,3 +15,8 @@ body{
   background-size: cover;
 }
 
+.form-login p {
+  color: red;
+  font-size: 12px;
+}
+
