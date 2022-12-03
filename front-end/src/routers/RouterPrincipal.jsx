@@ -39,13 +39,15 @@ export const RouterPrincipal = () => {
         {/* cargar componentes */}
         {/* Aqui se carga el componente que coincide con el Path */}
           <Routes>
-              <Route path='/' element={<Login/>}/>
+              {/* <Route path='/' element={<Login/>}/> */}
               <Route path='/login' element={<Login/>}/>
               <Route path='/registro' element={< Registro/>}/>
               <Route path='/ordenes' element={< Ordenes/>}/>
-              <Route path='/crearorden' element={< CrearOrden/>}/>
+              <Route path='/ordenes/:id/edit' element={< ActualizarOrden/>}/>
+              <Route path='/ordenes/new' element={< CrearOrden/>}/>
+              {/* <Route path='/crearorden' element={< CrearOrden/>}/> */}
               {/* <Route path='/actualizarorden' element={< ActualizarOrden/>}/> */}
-              <Route path='/actualizarorden/:id' element={< ActualizarOrden/>}/>
+              {/* <Route path='/actualizarorden/:id' element={< ActualizarOrden/>}/> */}
 
           </Routes>
         </section>
@@ -53,3 +55,18 @@ export const RouterPrincipal = () => {
     </BrowserRouter>
   )
 }
+
+
+{/* <BrowserRouter>
+<Navbar />
+<div className="App">
+  <Routes>
+    <Route path="/login" element={<Login />} />
+    <Route path="/books" element={<BooksHome />} />
+    <Route path="/books/:id" element={<Book />} />
+    <Route path="/books/:id/edit" element={<BookEdit />} />
+    <Route path="/books/new" element={<BookNew />} />
+    <Route path="/contenedor" element={<Contenedor />} />
+  </Routes>
+</div>
+</BrowserRouter> */}

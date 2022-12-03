@@ -6,7 +6,7 @@ export const CrearOrden = () => {
   return (
     <div className="container black">
       <h2>Crear Orden Nueva</h2>
-      <FormuOrden data={{}}/>
+      <FormuOrden data={[]}/>
     </div>
   )
 }

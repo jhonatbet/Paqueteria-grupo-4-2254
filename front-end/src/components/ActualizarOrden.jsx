@@ -3,9 +3,11 @@ import { useParams } from 'react-router-dom'
 import { FormuOrden } from './FormuOrden';
 
 const ordenData = {
-  id:1,
-  nombre:'Jhonatan',
-  destino: 'Pereira'
+  id: 1,
+  fecha: '1-12-21',
+  ciudaDestino: 'Manizales',
+  direccionDestino: 'Cr 10 12-16',
+  estadoOrden: 'Actualizar'
 }
 
 export const ActualizarOrden = () => {
