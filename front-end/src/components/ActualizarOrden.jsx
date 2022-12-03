@@ -4,7 +4,7 @@ import { FormuOrden } from './FormuOrden';
 
 const ordenData = {
   id: 1,
-  fecha: '1-12-21',
+  fecha: "01-12-21",
   ciudaDestino: 'Manizales',
   direccionDestino: 'Cr 10 12-16',
   estadoOrden: 'Actualizar'
@@ -21,3 +21,5 @@ export const ActualizarOrden = () => {
     </div>
   )
 }
+
+export default ActualizarOrden

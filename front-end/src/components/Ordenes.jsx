@@ -62,7 +62,7 @@ export const Ordenes = () => {
               return (
                 <tr key={index}>
                   <th scope="row">
-                    <Link to={'/ordenes/' + orden.id}>{index}</Link>
+                    <Link to={'/ordenes/' + orden.id}>{orden.id}</Link>
                   </th> 
                   <td>{orden.fecha}</td>
                   <td>{orden.ciudaDestino}</td>

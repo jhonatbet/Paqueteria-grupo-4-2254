@@ -10,3 +10,5 @@ export const CrearOrden = () => {
     </div>
   )
 }
+
+export default CrearOrden

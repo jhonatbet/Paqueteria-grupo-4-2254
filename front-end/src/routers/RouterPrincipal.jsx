@@ -23,10 +23,10 @@ export const RouterPrincipal = () => {
           <NavLink to="/ordenes"
           className="nav-link active" aria-current="page" >Ordenes</NavLink>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <NavLink to="/crearorden"
           className="nav-link active" aria-current="page" >Crear Orden</NavLink>
-        </li>
+        </li> */}
         {/* <li className="nav-item">
           <NavLink to="/actualizarorden"
           className="nav-link active" aria-current="page" >Actualizar Orden</NavLink>
@@ -39,7 +39,7 @@ export const RouterPrincipal = () => {
         {/* cargar componentes */}
         {/* Aqui se carga el componente que coincide con el Path */}
           <Routes>
-              {/* <Route path='/' element={<Login/>}/> */}
+              <Route path='/' element={<Login/>}/> 
               <Route path='/login' element={<Login/>}/>
               <Route path='/registro' element={< Registro/>}/>
               <Route path='/ordenes' element={< Ordenes/>}/>

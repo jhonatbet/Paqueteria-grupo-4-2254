@@ -1,28 +1,36 @@
 import React from 'react'
-import { useEffect } from 'react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useForm } from "react-hook-form";
 
 
 
-export const FormuOrden = ({ data }) => {
+export const FormuOrden = ({data}) => {
 
     const [isEdit, setIsEdit] = useState(false)
 
-    const { register, formState: { errors }, handleSubmit} = useForm();
-    const custonSubmit =(data) => {console.log('login data', data)}
+    const { register, formState: { errors }, handleSubmit, setValue} = useForm();
+
+    const custonSubmit =(dataForm) => {
+        if (isEdit){
+            console.log("Aquiva la logica de editar")
+        } else {
+            console.log("Aquiva la logica de crear")
+        }
+        console.log('dataForm', dataForm)}
 
     useEffect(() => {
-        console.log(data)
-        if (data.lengt !==0){
+        if (data.lengt !==0) {
             setIsEdit(true)
+            setValue('fecha', data.fecha)
+            setValue('time', data.fecha)
+            setValue('ciuentrega', data.ciudaDestino)
+            setValue('direntrega', data.direccionDestino)
         }
     })
 
 
     return (
         <div>
-            {/* {data.length != 0 ? updateOrden() : createOrden() } */}
             
             <form className="row g-4 black form" onSubmit={handleSubmit(custonSubmit)}>
 
@@ -145,3 +153,5 @@ export const FormuOrden = ({ data }) => {
         </div>
     )
 }
+
+export default FormuOrden
