@@ -1,36 +1,9 @@
 import React from 'react'
+import { useEffect } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import axios from "axios"
 
-const ordenes = [
-  {
-    id: 1,
-    fecha: '1-12-22',
-    ciudaDestino: 'Manizales',
-    direccionDestino: 'Cr 10 12-16',
-    estadoOrden: 'Pendiente',
-  },
-  {
-    id: 2,
-    fecha: '1-12-22',
-    ciudaDestino: 'Ibague',
-    direccionDestino: 'Cr 11 15-21',
-    estadoOrden: 'Pendiente'
-  },
-  {
-    id: 3,
-    fecha: '1-12-22',
-    ciudaDestino: 'Bogota',
-    direccionDestino: 'Cr 10 12-16',
-    estadoOrden: 'Pendiente'
-  },
-  {
-    id: 4,
-    fecha: '2-12-22',
-    ciudaDestino: 'Cali',
-    direccionDestino: 'Cr 20 15-36',
-    estadoOrden: 'Cumplida'
-  }
-]
 
 const labels = [
   "# Orden",
@@ -42,7 +15,28 @@ const labels = [
 ]
 
 export const Ordenes = () => {
+  const [ordenes, setOrdenes] = useState(null)
+  const [update, setUpdate] = useState(false)
 
+  useEffect(() => {
+    const userId = "638cff04fcda255e8b4f2378"
+    axios
+      // .get("http://localhost:5000/paquetes?userId=" + userId)
+      .get("http://localhost:5000/paquetes/")
+      .then(result => {
+        console.log(result.data)
+        setOrdenes(result.data)
+      })
+  },[update])
+
+  const deleteClick = (ordenId) => {
+    axios
+        .delete("http://localhost:5000/paquetes/delete/" + ordenId)
+        .then(response => {
+            console.log(response.data)
+            setUpdate(!update)
+        })
+  }
 
   return (
     <div className="container">
@@ -58,23 +52,23 @@ export const Ordenes = () => {
             </tr>
           </thead>
           <tbody>
-            {ordenes.map((orden, index) => {
+            {ordenes !== null ? ordenes.map((orden, index) => {
               return (
                 <tr key={index}>
                   <th scope="row">
-                    <Link to={'/ordenes/' + orden.id}>{orden.id}</Link>
-                  </th> 
+                    <Link to={'/ordenes/' + orden._id}>{index}</Link>
+                  </th>
                   <td>{orden.fecha}</td>
-                  <td>{orden.ciudaDestino}</td>
-                  <td>{orden.direccionDestino}</td>
+                  <td>{orden.ciuDestino}</td>
+                  <td>{orden.dirDestino}</td>
                   <td>{orden.estadoOrden}</td>
                   <td scope="row">
-                    <Link className="btn btn-success" to={'/ordenes/' + orden.id + '/edit'}>Edit</Link>
+                    <Link className="btn btn-success" to={'/ordenes/' + orden._id + '/edit'}>Edit</Link>
                     <a className="btn btn-danger" onClick={() => deleteClick(orden._id)}>Delete</a>
                   </td>
                 </tr>
               )
-            })}
+            }) : ''}
           </tbody>
         </table>
       </div>

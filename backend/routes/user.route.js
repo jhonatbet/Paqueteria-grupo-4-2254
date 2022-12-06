@@ -1,15 +1,16 @@
 let mongoose = require('mongoose'),
-  express = require('express'),
-  router = express.Router();
+    express = require('express'),
+    router = express.Router()
 
-let paqueteSchema = require('../models/Paquete');
+let userSchema = require('../models/User')
 
 // CRUD
 
 // Create
-//localhost:5000/paquetes/create
+//localhost:5000/users/create
 router.route('/create').post((req, res, next) => {
-    paqueteSchema.create(req.body, (error, data) => {
+    console.log(req.body)
+    userSchema.create(req.body, (error, data) => {
         if (error) {
             return next(error)
         } else {
@@ -18,11 +19,10 @@ router.route('/create').post((req, res, next) => {
     })
 })
 
-// Read Paquetes
-//localhost:5000/paquetes/
-//localhost:5000/paquetes?userId=1234
-router.route('/').get((req, res, next) => {
-    paqueteSchema.find({ userId: req.query.userId }, (error, data) => {
+// Read Users
+//localhost:5000/users/
+router.route('/').get((req, res) => {
+    userSchema.find((error, data) => {
         if (error) {
             return next(error)
         } else {
@@ -31,10 +31,10 @@ router.route('/').get((req, res, next) => {
     })
 })
 
-// Read Paquetes
-//localhost:5000/paquetes/1
+// Read Users
+//localhost:5000/users/1
 router.route('/:id').get((req, res, next) => {
-    paqueteSchema.findById(req.params.id, (error, data) => {
+    userSchema.findById(req.params.id, (error, data) => {
         if (error) {
             return next(error)
         } else {
@@ -43,25 +43,25 @@ router.route('/:id').get((req, res, next) => {
     })
 })
 
-// Update Paquetes
-//localhost:5000/paquetes/edit/2
+// Update Users
+//localhost:5000/users/edit/2
 router.route('/edit/:id').put((req, res, next) => {
-    paqueteSchema.findByIdAndUpdate(req.params.id, {
+    userSchema.findByIdAndUpdate(req.params.id, {
         $set: req.body
     }, (error, data) => {
         if (error) {
             return next(error)
         } else {
-            console.log('Orden updated successfully !')
+            console.log('Student updated successfully !')
             res.json(data)
         }
     })
 })
 
-// Delete Paquetes
-//localhost:5000/paquetes/delete/2
+// Delete Users
+//localhost:5000/users/delete/2
 router.route('/delete/:id').delete((req, res, next) => {
-    paqueteSchema.findByIdAndRemove(req.params.id, (error, data) => {
+    userSchema.findByIdAndRemove(req.params.id, (error, data) => {
         if (error) {
             return next(error)
         } else {

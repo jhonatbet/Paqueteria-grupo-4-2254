@@ -1,32 +1,38 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { useForm } from "react-hook-form";
+import axios from 'axios';
 
 
 
-export const FormuOrden = ({data}) => {
+export const FormuOrden = ({data, ordenId}) => {
 
     const [isEdit, setIsEdit] = useState(false)
 
     const { register, formState: { errors }, handleSubmit, setValue} = useForm();
 
     const custonSubmit =(dataForm) => {
-        if (isEdit){
-            console.log("Aquiva la logica de editar")
+         console.log (dataForm)
+        if (isEdit) {
+            axios
+                .put("http://localhost:5000/paquetes/edit/"+ ordenId, dataForm)
+                .then(response => console.log(response.data))
         } else {
-            console.log("Aquiva la logica de crear")
+            axios
+                .post("http://localhost:5000/paquetes/create", dataForm)
+                .then(response => console.log(response.data))
         }
-        console.log('dataForm', dataForm)}
+    }
 
     useEffect(() => {
-        if (data.lengt !==0) {
+        if (data.length !==0) {
             setIsEdit(true)
             setValue('fecha', data.fecha)
-            setValue('time', data.fecha)
-            setValue('ciuentrega', data.ciudaDestino)
-            setValue('direntrega', data.direccionDestino)
+            setValue('hora', data.hora)
+            setValue('ciuDestino', data.ciuDestino)
+            setValue('dirDestino', data.dirDestino)
         }
-    })
+    }, [])
 
 
     return (
@@ -91,10 +97,10 @@ export const FormuOrden = ({data}) => {
                 <div className="col-6">
                     <label htmlFor="inputName" className="form-label">Nombre Destinatario</label>
                     <input type="text" className="form-control " id="inputDestinatario"
-                    {...register("nombredes", { required: true })}
-                    aria-invalid={errors.nombredes ? "true" : "false"}
+                    {...register("nombre", { required: true })}
+                    aria-invalid={errors.nombre ? "true" : "false"}
                 />
-                {errors.nombredes && <p>Field required</p>} 
+                {errors.nombre && <p>Field required</p>} 
                 </div>
 
                 <div className="col-6">
@@ -109,42 +115,41 @@ export const FormuOrden = ({data}) => {
                 <div className="col-6">
                     <label htmlFor="inputDireccion" className="form-label">Direccion Recogida</label>
                     <input type="text" className="form-control" id="inputDireccion"
-                    {...register("dirrecogida", { required: true })}
-                    aria-invalid={errors.dirrecogida ? "true" : "false"}
+                    {...register("dirRecogida", { required: true })}
+                    aria-invalid={errors.dirRecogida ? "true" : "false"}
                 />
-                {errors.dirrecogida && <p>Field required</p>} 
+                {errors.dirRecogida && <p>Field required</p>} 
                 </div>
 
                 <div className="col-6">
                     <label htmlFor="inputCiudad" className="form-label">Ciudad Recogida</label>
                     <input type="text" className="form-control" id="inputCiudad"
-                    {...register("ciurecogida", { required: true })}
-                    aria-invalid={errors.ciurecogida ? "true" : "false"}
+                    {...register("ciuRecogida", { required: true })}
+                    aria-invalid={errors.ciuRecogida ? "true" : "false"}
                 />
-                {errors.ciurecogida && <p>Field required</p>} 
+                {errors.ciuRecogida && <p>Field required</p>} 
                 </div>
 
                 <div className="col-6">
                     <label htmlFor="inputDirEntrega" className="form-label">Direccion Entrega</label>
                     <input type="text" className="form-control" id="inputDirEntrega"
-                    {...register("direntrega", { required: true })}
-                    aria-invalid={errors.direntrega ? "true" : "false"}
+                    {...register("dirDestino", { required: true })}
+                    aria-invalid={errors.dirDestino ? "true" : "false"}
                 />
-                {errors.direntrega && <p>Field required</p>} 
+                {errors.dirDestino && <p>Field required</p>} 
                 </div>
 
                 <div className="col-6">
                     <label htmlFor="inputCiudadEntrega" className="form-label">Ciudad Entrega</label>
                     <input type="text" className="form-control" id="inputCiudadEntrega"
-                    {...register("ciuentrega", { required: true })}
-                    aria-invalid={errors.ciuentrega ? "true" : "false"}
+                    {...register("ciuDestino", { required: true })}
+                    aria-invalid={errors.ciuDestino ? "true" : "false"}
                 />
-                {errors.ciuentrega && <p>Field required</p>} 
+                {errors.ciuDestino && <p>Field required</p>} 
                 </div>
 
                 <div className="col-12">
-                    <button type="submit" className="btn btn-success" value={isEdit ? "Edit" : "Create"} >Guardar</button>
-                    <input type="submit" value={isEdit ? "Edit" : "Create"} />
+                    <input type="submit" className="btn btn-success" value={isEdit ? "Actualizar" : "Crear"} />
                 </div>
 
                 <br />

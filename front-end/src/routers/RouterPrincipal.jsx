@@ -5,6 +5,7 @@ import { ActualizarOrden } from '../components/ActualizarOrden';
 import Login from '../components/Login';
 import { Ordenes } from '../components/Ordenes';
 import { Registro } from '../components/Registro';
+import { Orden } from '../components/orden';
 
 
 export const RouterPrincipal = () => {
@@ -43,6 +44,7 @@ export const RouterPrincipal = () => {
               <Route path='/login' element={<Login/>}/>
               <Route path='/registro' element={< Registro/>}/>
               <Route path='/ordenes' element={< Ordenes/>}/>
+              <Route path='/ordenes/:id' element={< Orden/>}/>
               <Route path='/ordenes/:id/edit' element={< ActualizarOrden/>}/>
               <Route path='/ordenes/new' element={< CrearOrden/>}/>
               {/* <Route path='/crearorden' element={< CrearOrden/>}/> */}
