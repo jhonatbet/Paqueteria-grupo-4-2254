@@ -19,7 +19,7 @@ export const Ordenes = () => {
   const [update, setUpdate] = useState(false)
 
   useEffect(() => {
-    const userId = "638cff04fcda255e8b4f2378"
+    // const userId = "638cff04fcda255e8b4f2378"
     axios
       // .get("http://localhost:5000/paquetes?userId=" + userId)
       .get("http://localhost:5000/paquetes/")
@@ -27,15 +27,15 @@ export const Ordenes = () => {
         console.log(result.data)
         setOrdenes(result.data)
       })
-  },[update])
+  }, [update])
 
   const deleteClick = (ordenId) => {
     axios
-        .delete("http://localhost:5000/paquetes/delete/" + ordenId)
-        .then(response => {
-            console.log(response.data)
-            setUpdate(!update)
-        })
+      .delete("http://localhost:5000/paquetes/delete/" + ordenId)
+      .then(response => {
+        console.log(response.data)
+        setUpdate(!update)
+      })
   }
 
   return (
